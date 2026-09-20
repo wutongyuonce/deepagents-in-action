@@ -15,3 +15,11 @@ node_modules/
 
 # local planning docs (superpowers)
 docs/superpowers/
+
+# python environments and secrets
+.venv/
+.env
+__pycache__/
+
+# notebook checkpoints
+.ipynb_checkpoints/
