@@ -22,6 +22,7 @@ notebooks/
 | 第 1 章 | [`ch01/01-agent-harness.ipynb`](ch01/01-agent-harness.ipynb) | Agent Harness 与最小运行结构 | ✅ 已收录 |
 | 第 2 章 | — | 快速上手与自定义工具 | ⬜ 待认领 |
 | 第 3 章 | — | 虚拟文件系统与各类存储后端 | ⬜ 待认领 |
+| 第 5 章 | [`ch05/01-subagent-delegation.ipynb`](ch05/01-subagent-delegation.ipynb) | 子 Agent 委派与上下文隔离 | ✅ 已收录 |
 
 ## 环境与依赖
 
