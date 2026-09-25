@@ -15,3 +15,7 @@ node_modules/
 
 # local planning docs (superpowers)
 docs/superpowers/
+
+# local Chapter 6 Agent Server state
+notebooks/ch06/demo/.langgraph_api/
+notebooks/ch06/demo/graphs/__pycache__/
