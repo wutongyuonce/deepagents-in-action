@@ -49,9 +49,9 @@ if os.getenv("CH06_SCRIPTED_MODEL") == "1":
     model = ScriptedModel()
 else:
     model = ChatOpenAI(
-        model=os.getenv("MODEL_NAME", "deepseek-chat"),
+        model=os.getenv("MODEL_NAME", "Qwen/Qwen2.5-7B-Instruct"),
         api_key=os.environ["MODEL_API_KEY"],
-        base_url=os.getenv("MODEL_BASE_URL", "https://api.deepseek.com"),
+        base_url=os.getenv("MODEL_BASE_URL", "https://api.siliconflow.cn/v1"),
         temperature=0,
     )
 
