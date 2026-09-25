@@ -16,7 +16,7 @@ source .venv/bin/activate
 uv pip install "deepagents==0.7.15" "langchain==1.4.2" "langgraph==1.2.11" "langchain-openai==1.6.2" python-dotenv ipykernel nbconvert
 ```
 
-需要支持工具调用的模型 API。默认使用 SiliconFlow；模型名可通过 `MODEL_NAME` 配置，密钥可通过环境变量或仓库根目录未提交的 `.env` 配置。其他 OpenAI 兼容服务可同时设置 `MODEL_API_KEY`、`MODEL_BASE_URL` 和 `MODEL_NAME`。不要提交真实密钥或含密钥的输出。
+需要支持工具调用的模型 API。默认使用 SiliconFlow；也可在仓库根目录未提交的 `.env` 中设置 `DEEPSEEK_API_KEY`，使用 DeepSeek API（默认模型 `deepseek-flash`）。模型名可通过 `MODEL_NAME` 覆盖；其他 OpenAI 兼容服务可同时设置 `MODEL_API_KEY`、`MODEL_BASE_URL` 和 `MODEL_NAME`。不要提交真实密钥或含密钥的输出。
 
 从仓库根目录运行：
 
