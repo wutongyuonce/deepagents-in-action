@@ -11,6 +11,7 @@
 | [第 1 章：Agent Harness](ch01/01-agent-harness.ipynb) | echo 成功、消息循环、默认工具差异 | 默认脚本模型；可选真实模型 |
 | [第 5 章：同步子 Agent](ch05/01-subagent-delegation.ipynb) | 消息隔离、文件共享与显式读取 | 默认脚本模型；可选真实模型 |
 | [第 6 章：异步子 Agent](ch06/01-async-subagent-lifecycle.ipynb) | 五个异步工具、服务状态与失败清理 | 默认脚本模型；真实本地 Agent Server；server 依赖组 |
+| [第 7 章：Skills](ch07/01-skills-progressive-disclosure.ipynb) | 元数据注入、分阶段文件读取与缺失资源 | 默认脚本模型；可选真实模型 |
 <!-- course-notebook-index:end -->
 
 章节共建进度以 [#105](https://github.com/datawhalechina/deepagents-in-action/issues/105) 为准；目录元数据在 [catalog.json](catalog.json)。首波样板分别覆盖入门对比、同步机制和服务生命周期；后续章节按同一入口扩展。
