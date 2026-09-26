@@ -14,11 +14,11 @@
 
 ## 安装与运行
 
-本波使用 Python 3.12 和独立的 Python 子项目。先安装 [uv](https://docs.astral.sh/uv/getting-started/installation/)，在仓库根目录执行：
+本波使用 Python 3.12 和独立的 Python 子项目。先安装 [uv](https://docs.astral.sh/uv/getting-started/installation/)，在仓库根目录运行模板确认基础环境：
 
 ```bash
 uv sync --project notebooks --locked
-uv run --project notebooks --locked python -m course_notebooks.run
+uv run --project notebooks --locked python -m course_notebooks.run template
 ```
 
 `uv.lock` 锁定实际依赖；基础版本是 deepagents 0.7.15、langchain 1.4.2、langgraph 1.2.11、langchain-openai 1.6.2。服务类实验另外安装：
