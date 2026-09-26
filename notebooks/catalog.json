@@ -30,6 +30,20 @@
       "model": "optional",
       "services": [],
       "source_issue": 126
+    },
+    {
+      "id": "ch06-async-subagents",
+      "chapter_id": "ch06-async-subagents",
+      "title": "异步子 Agent 生命周期",
+      "path": "ch06/01-async-subagent-lifecycle.ipynb",
+      "dependencies": [
+        "server"
+      ],
+      "model": "optional",
+      "services": [
+        "local-agent-server"
+      ],
+      "source_issue": 128
     }
   ]
 }

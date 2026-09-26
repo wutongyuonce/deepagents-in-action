@@ -13,6 +13,8 @@
 >
 > 起步时不需要远程部署：本章后面会给出“本地单部署 + ASGI”的完整最小示例。
 
+可从仓库根目录顺序执行配套的 [第 6 章 Notebook](https://github.com/datawhalechina/deepagents-in-action/blob/main/notebooks/ch06/01-async-subagent-lifecycle.ipynb)：它会自行启动并清理本地 Agent Server，验证五个异步工具的真实调用与状态变化。
+
 ## 同步子 Agent 的瓶颈
 
 回顾上一章的多子 Agent 协作模式：
@@ -207,21 +209,21 @@ langchain-openai
 
 ### 第 2 步：准备环境变量
 
-本地 `langgraph dev` 也需要 LangSmith API Key，模型调用则需要你所选模型提供商的 Key。为了让示例尽量短，下面默认用 OpenAI；如果你想和前面章节保持一致，也可以直接改成硅基流动的 OpenAI 兼容接口。对于本章这种多 Agent / 中间件叠加场景，更建议用能力更强的模型；如果你只是验证最小 Demo，也可以尝试 `Qwen/Qwen2.5-7B-Instruct`。
+本地 in-memory `langgraph dev` 不要求 LangSmith API Key；需要 LangSmith 追踪时再配置。模型调用仍需要你所选模型提供商的 Key。为了让示例尽量短，下面默认用 OpenAI；如果你想和前面章节保持一致，也可以直接改成硅基流动的 OpenAI 兼容接口。对于本章这种多 Agent / 中间件叠加场景，更建议用能力更强的模型；如果你只是验证最小 Demo，也可以尝试 `Qwen/Qwen2.5-7B-Instruct`。
 
 ```bash
 OPENAI_API_KEY=sk-...
-LANGSMITH_API_KEY=lsv2-...
+# LANGSMITH_API_KEY=lsv2-...  # 仅在需要追踪时设置
 # 或者改用硅基流动：
 # SILICONFLOW_API_KEY=your-siliconflow-key
 # MODEL_NAME=zai-org/GLM-5.2
 ```
 
-把这两行保存到 `.env`：
+把模型 Key 保存到 `.env`；需要追踪时再添加 LangSmith Key：
 
 ```dotenv
 OPENAI_API_KEY=sk-...
-LANGSMITH_API_KEY=lsv2-...
+# LANGSMITH_API_KEY=lsv2-...
 ```
 
 如果你要改成和第二章一致的硅基流动写法，把 `.env` 改成下面这样即可：
