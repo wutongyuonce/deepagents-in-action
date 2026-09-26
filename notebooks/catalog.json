@@ -20,6 +20,16 @@
       "model": "optional",
       "services": [],
       "source_issue": 116
+    },
+    {
+      "id": "ch05-subagents",
+      "chapter_id": "ch05-subagents",
+      "title": "子 Agent 委派与上下文隔离",
+      "path": "ch05/01-subagent-delegation.ipynb",
+      "dependencies": [],
+      "model": "optional",
+      "services": [],
+      "source_issue": 126
     }
   ]
 }
