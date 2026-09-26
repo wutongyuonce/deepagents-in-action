@@ -104,7 +104,9 @@ def export_reading(nb, path, root, output_dir, notebook_id, commit):
                 link = f"https://github.com/datawhalechina/deepagents-in-action/blob/{commit or 'main'}/{resolved.relative_to(root).as_posix()}"
                 if url.fragment:
                     link += "#" + url.fragment
-                return match.group(0).replace(target, link)
+                start = match.start(1) - match.start(0)
+                end = match.end(1) - match.start(0)
+                return match.group(0)[:start] + link + match.group(0)[end:]
             cell.source = LINK.sub(resolve, cell.source)
     for extension, exporter in (("html", HTMLExporter()), ("md", MarkdownExporter())):
         body, resources = exporter.from_notebook_node(reading, resources={"unique_key": notebook_id})
@@ -164,6 +166,10 @@ def run_entries(entries, root, output_dir, *, mode, timeout=180, write_back=Fals
     root, output_dir = Path(root).resolve(), Path(output_dir).resolve()
     mode = selected_mode(mode)
     output_dir.mkdir(parents=True, exist_ok=True)
+    # A new failure or not_run entry must not leave an earlier success beside its report.
+    for entry in entries:
+        for extension in ("ipynb", "html", "md"):
+            (output_dir / f"{entry['id']}.{extension}").unlink(missing_ok=True)
     report = {"mode": mode, "source_commit": git_commit(root), "python": sys.version.split()[0],
               "executed_at": datetime.now(timezone.utc).isoformat(),
               "lock_hash": hashlib.sha256((root / "notebooks/uv.lock").read_bytes()).hexdigest() if (root / "notebooks/uv.lock").exists() else None,

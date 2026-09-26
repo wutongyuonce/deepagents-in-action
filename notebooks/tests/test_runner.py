@@ -5,7 +5,7 @@ from pathlib import Path
 import nbformat
 import pytest
 
-from course_notebooks.run import run_entries, validate_catalog
+from course_notebooks.run import export_reading, run_entries, validate_catalog
 
 
 def make_repo(tmp_path, sources):
@@ -25,7 +25,7 @@ def make_repo(tmp_path, sources):
 
 def test_project_kernel_ignores_user_kernel_and_offline_keys(tmp_path, monkeypatch):
     entries = make_repo(tmp_path, {"ok": f"import sys, os\nassert sys.executable == {sys.executable!r}\nassert not os.getenv('MODEL_API_KEY')\nassert os.getenv('COURSE_MODE') == 'offline'\nprint('isolated')"})
-    bad = tmp_path / "foreign/kernels/python3"
+    bad = tmp_path / "foreign/kernels/course"
     bad.mkdir(parents=True)
     (bad / "kernel.json").write_text(json.dumps({"argv": ["/nonexistent/python", "{connection_file}"], "language": "python", "display_name": "bad"}))
     monkeypatch.setenv("JUPYTER_PATH", str(tmp_path / "foreign"))
@@ -58,3 +58,28 @@ def test_catalog_rejects_unknown_chapter_and_missing_local_link(tmp_path):
     nbformat.write(nb, path)
     with pytest.raises(ValueError, match="does-not-exist"):
         validate_catalog(tmp_path, entries)
+
+
+def test_export_keeps_filename_label_when_resolving_relative_link(tmp_path):
+    entries = make_repo(tmp_path, {"ok": "print('ok')"})
+    path = tmp_path / "notebooks" / entries[0]["path"]
+    nb = nbformat.read(path, as_version=4)
+    nb.cells.append(nbformat.v4.new_markdown_cell("[local_server.py](local_server.py)"))
+    nb.metadata["course_run"] = {"mode": "offline", "source_hash": "example-hash"}
+    output = tmp_path / "output"
+    output.mkdir()
+    export_reading(nb, path, tmp_path, output, "ok", "test-commit")
+    assert "[local_server.py](https://github.com/" in (output / "ok.md").read_text()
+
+
+def test_failed_batch_removes_previous_selected_artifacts(tmp_path):
+    entries = make_repo(tmp_path, {"bad": "raise ValueError('failed')", "later": "print('later')"})
+    output = tmp_path / "output"
+    output.mkdir()
+    for name in ("bad", "later"):
+        for extension in ("ipynb", "html", "md"):
+            (output / f"{name}.{extension}").write_text("stale success")
+    report = run_entries(entries, tmp_path, output, mode="offline", timeout=30)
+    assert report["results"][1]["status"] == "not_run"
+    assert not (output / "later.html").exists()
+    assert not (output / "later.ipynb").exists()
