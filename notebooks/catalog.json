@@ -10,6 +10,16 @@
       "dependencies": [],
       "model": "optional",
       "services": []
+    },
+    {
+      "id": "ch01-agent-harness",
+      "chapter_id": "ch01-agent-harness",
+      "title": "Agent Harness 与最小运行结构",
+      "path": "ch01/01-agent-harness.ipynb",
+      "dependencies": [],
+      "model": "optional",
+      "services": [],
+      "source_issue": 116
     }
   ]
 }

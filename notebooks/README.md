@@ -8,9 +8,10 @@
 | 实验 | 学习证据 | 模型与服务 |
 |---|---|---|
 | [作者模板](_template/01-minimal-tool.ipynb) | 实际 echo 工具、调用与返回关联 | 默认脚本模型；可选真实模型 |
+| [第 1 章：Agent Harness](ch01/01-agent-harness.ipynb) | echo 成功、消息循环、默认工具差异 | 默认脚本模型；可选真实模型 |
 <!-- course-notebook-index:end -->
 
-章节共建进度以 [#105](https://github.com/datawhalechina/deepagents-in-action/issues/105) 为准；目录元数据在 [catalog.json](catalog.json)。待整合的首波贡献：[第 1 章 #121](https://github.com/datawhalechina/deepagents-in-action/pull/121)、[第 5 章 #127](https://github.com/datawhalechina/deepagents-in-action/pull/127)、[第 6 章 #129](https://github.com/datawhalechina/deepagents-in-action/pull/129)。
+章节共建进度以 [#105](https://github.com/datawhalechina/deepagents-in-action/issues/105) 为准；目录元数据在 [catalog.json](catalog.json)。待整合的首波贡献：[第 5 章 #127](https://github.com/datawhalechina/deepagents-in-action/pull/127)、[第 6 章 #129](https://github.com/datawhalechina/deepagents-in-action/pull/129)。
 
 ## 安装与运行
 
