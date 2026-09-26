@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "notebooks": [
+    {
+      "id": "template",
+      "kind": "template",
+      "chapter_id": null,
+      "title": "最小工具调用模板",
+      "path": "_template/01-minimal-tool.ipynb",
+      "dependencies": [],
+      "model": "optional",
+      "services": []
+    }
+  ]
+}
