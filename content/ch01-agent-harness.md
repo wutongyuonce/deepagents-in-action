@@ -1,5 +1,7 @@
 # 第 1 章：从 Agent Framework 到 Agent Harness — Deep Agents 的诞生逻辑
 
+配套实验：[第 1 章 Notebook：Agent Harness 与最小运行结构](https://github.com/datawhalechina/deepagents-in-action/blob/main/notebooks/ch01/01-agent-harness.ipynb)。
+
 > 本章是《Deep Agents 实战》系列的开篇。我们不急着写代码，而是先回答一个根本问题：在 Agent 开发领域已经有那么多框架的今天，Deep Agents 为什么还要存在？它解决了什么问题？
 
 ## 一个真实的困境
